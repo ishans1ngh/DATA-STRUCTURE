@@ -1,35 +1,28 @@
 #include <stdio.h>
 
-int main () {
-    int n, pos, value;
+int main() {
+    int n, pos;
     printf("Enter the number of elements: ");
     scanf("%d", &n);
-    int arr[n + 1];  
-
+    int arr[n];  
     for (int i = 0; i < n; i++) {
         printf("Enter element %d: ", i + 1);
         scanf("%d", &arr[i]);
     }
 
-    printf("Enter the position to insert the new element (0 to %d): ", n);
+    printf("Enter the position to delete the element (0 to %d): ", n - 1);
     scanf("%d", &pos);
-    if (pos < 0 || pos > n) {
+    if (pos < 0 || pos >= n) {
         printf("Invalid position!\n");
         return 1;
     }
 
-    printf("Enter the value to insert: ");
-    scanf("%d", &value);
-
-
-    for (int i = n; i >= pos; i--) {
-        arr[i] = arr[i - 1];
+    for (int i = pos; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
     }
+    n--;  
 
-    arr[pos - 1] = value;
-    n++;
-
-    printf("Array after insertion:\n");
+    printf("Array after deletion:\n");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
@@ -37,4 +30,3 @@ int main () {
 
     return 0;
 }
-        
